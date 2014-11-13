@@ -9,6 +9,7 @@
         <module>pay-demo</module>
         <module>pay-demo-web</module>
         <module>pay-base</module>
+        <module>mybatis-gen</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -12,11 +12,26 @@
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
 		default-lazy-init="true">
-
-   <!-- ################## old hlpay #################	 -->		
+		
+	<!-- 方言配置 -->
+	<bean id="vendorProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="DB2">db2</prop>
+				<prop key="Oracle">oracle</prop>
+				<prop key="MySQL">mysql</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+		<property name="properties" ref="vendorProperties" />
+	</bean>			
+		
+   <!-- ################## new hlpay #################	 -->		
 	<!-- 数据源代理 格式化 -->
-	<bean id="dataSource_old_hlpay_proxy" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-		<constructor-arg ref="dataSource_old_hlpay" />
+	<bean id="dataSource_proxy" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSource" />
 		<property name="logFormatter">
 			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
 				<property name="loggingType" value="SINGLE_LINE" />
@@ -29,8 +44,8 @@
 	<!-- 分页代理尚未加入 -->
 	
 	<!-- MyBatis配置 -->
-	<bean id="oldHLsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource_old_hlpay_proxy" />
+	<bean id="newHLsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_proxy" />
 
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
 		<property name="typeAliasesPackage" value="com.hlpay.base.entity" /><!-- 注意 根据实际包路径 -->
@@ -41,16 +56,16 @@
 	
 	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="sqlSessionFactoryBeanName" value="oldHLsqlSessionFactory" /><!-- 指定数据源 -->		
+        <property name="sqlSessionFactoryBeanName" value="newHLsqlSessionFactory" /><!-- 指定数据源 -->	
 		<property name="basePackage" value="com.hlpay.base.dao" /><!-- 注意 根据实际包路径 -->
-		<property name="annotationClass" value="com.hlpay.base.dao.OldHLRepository"/><!-- 注意 根据实际包路径 -->
+		<property name="annotationClass" value="com.hlpay.base.dao.NewHLRepository"/><!-- 注意 根据实际包路径 -->
 	</bean>
 	
 	<!-- 事务  -->  
 	<!-- 单个数据源 实物配置 -->
-	<bean id="oldHLTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource_old_hlpay" />
+	<bean id="newHLTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_proxy" />
 	</bean>
-	<tx:annotation-driven transaction-manager="oldHLTransactionManager"/>
-   <!-- ################## end old hlpay #################	 -->	    		
+	<tx:annotation-driven transaction-manager="newHLTransactionManager"/>
+   <!-- ################## end new hlpay #################	 -->		
 </beans>	
