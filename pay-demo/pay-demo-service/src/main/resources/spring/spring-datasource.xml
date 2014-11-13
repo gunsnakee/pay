@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+		default-lazy-init="true">
+
+	<!-- 新互联支付 数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		destroy-method="close">
+		<property name="url" value="${master.newhlpay.jdbc.url}" />
+		<property name="username" value="${master.newhlpay.jdbc.username}" />
+		<property name="password" value="${master.newhlpay.jdbc.password}" />
+		<property name="driverClassName" value="${master.newhlpay.jdbc.driverClassName}" />
+		<property name="filters" value="${master.jdbc.filters}" />
+
+		<property name="maxActive" value="${master.jdbc.maxActive}" />
+		<property name="initialSize" value="${master.jdbc.initialSize}" />
+		<property name="maxWait" value="${master.jdbc.maxWait}" />
+		<property name="minIdle" value="${master.jdbc.minIdle}" />
+
+		<property name="timeBetweenEvictionRunsMillis" value="${master.jdbc.timeBetweenEvictionRunsMillis}" />
+		<property name="minEvictableIdleTimeMillis" value="${master.jdbc.minEvictableIdleTimeMillis}" />
+
+		<!-- <property name="validationQuery" value="${master.jdbc.validationQuery}" /> 数据库校验先去掉-->
+		<property name="testWhileIdle" value="${master.jdbc.testWhileIdle}" />
+		<property name="testOnBorrow" value="${master.jdbc.testOnBorrow}" />
+		<property name="testOnReturn" value="${master.jdbc.testOnReturn}" />
+		<property name="maxOpenPreparedStatements" value="${master.jdbc.maxOpenPreparedStatements}" />
+		<property name="removeAbandoned" value="${master.jdbc.removeAbandoned}" /> <!-- 打开removeAbandoned功能 -->
+		<property name="removeAbandonedTimeout" value="${master.jdbc.removeAbandonedTimeout}" /> <!-- 1800秒，也就是30分钟 -->
+		<property name="logAbandoned" value="${master.jdbc.logAbandoned}" /> <!-- 关闭abanded连接时输出错误日志 -->
+	</bean>
+	
+
+</beans>	

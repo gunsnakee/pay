@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"	
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+		default-lazy-init="true">
+	<description>pay-demo-service</description>
+
+	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.huipengpay" />
+
+    <!--读取配置文件   -->
+	<bean id= "configReader" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name = "location">        
+               <value>classpath:spring/jdbc.properties</value>
+        </property>
+        <!--对数据库密码进行解密-->
+        <property name="propertiesPersister">
+            <bean class="com.huipengpay.base.utils.DBPropertiesPersister" />
+        </property>
+        <property name ="ignoreResourceNotFound" value="true"/>
+    </bean>   
+</beans>
