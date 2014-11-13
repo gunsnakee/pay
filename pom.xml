@@ -5,7 +5,11 @@
   <groupId>com.huipengpay</groupId>
   <artifactId>pay</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <modules>
+        <module>pay-demo</module>
+        <module>pay-demo-web</module>
+    </modules>
+    <packaging>pom</packaging>
 
   <name>pay</name>
   <url>http://maven.apache.org</url>
