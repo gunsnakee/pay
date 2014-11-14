@@ -8,6 +8,14 @@ import java.util.Date;
  */
 public class DemoDto implements Serializable {
 
+    public DemoDto(){}
+
+    public DemoDto(Integer id,String name,Date date){
+        this.id = id;
+        this.name = name;
+        this.date = date;
+    }
+
     private int id;
     private String name;
     private Date date;

@@ -44,7 +44,7 @@
 	<!-- 分页代理尚未加入 -->
 	
 	<!-- MyBatis配置 -->
-	<bean id="newHLsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource_proxy" />
 
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
@@ -56,16 +56,16 @@
 	
 	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="sqlSessionFactoryBeanName" value="newHLsqlSessionFactory" /><!-- 指定数据源 -->	
-		<property name="basePackage" value="com.hlpay.base.dao" /><!-- 注意 根据实际包路径 -->
-		<property name="annotationClass" value="com.hlpay.base.dao.NewHLRepository"/><!-- 注意 根据实际包路径 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /><!-- 指定数据源 -->
+		<property name="basePackage" value="com.huipengpay.demo.dao" /><!-- 注意 根据实际包路径 -->
+		<!--<property name="annotationClass" value="com.huipengpay.base.db.Repository"/>&lt;!&ndash; 注意 根据实际包路径 &ndash;&gt;-->
 	</bean>
 	
 	<!-- 事务  -->  
 	<!-- 单个数据源 实物配置 -->
-	<bean id="newHLTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource_proxy" />
 	</bean>
-	<tx:annotation-driven transaction-manager="newHLTransactionManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
    <!-- ################## end new hlpay #################	 -->		
 </beans>	
