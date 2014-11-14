@@ -17,18 +17,19 @@
   <url>http://www.huipengpay.com</url>
 
   <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <java.version>1.8</java.version><!-- 统一jdk版本 -->
-        <spring.version>4.0.7.RELEASE</spring.version>
-        <commons-lang3.version>3.1</commons-lang3.version>
+        <spring.version>4.1.2.RELEASE</spring.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
         <mybatis.version>3.2.7</mybatis.version><!-- 用到 mybatis -->
         <spring-data-jpa.version>1.5.2.RELEASE</spring-data-jpa.version>
-        <mysql.version>5.1.30</mysql.version><!-- mysql -->
+        <mysql.version>5.1.34</mysql.version><!-- mysql -->
         <oracle.version>10.2.0.2.0</oracle.version>	<!-- oracle -->
         <sqlserver.version>1.3.1</sqlserver.version><!-- sqlserver -->
-        <druid.version>1.0.6</druid.version><!-- 数据源 -->
+        <druid.version>1.0.10</druid.version><!-- 数据源 -->
         <logback.version>1.0.9</logback.version><!-- log -->
         <slf4j.version>1.7.7</slf4j.version><!-- log -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!--Plugin的属性 -->
         <hibernate_version>4.3.6.Final</hibernate_version>
         <hibernate_vilidator_version>5.1.2.Final</hibernate_vilidator_version>
   </properties>
@@ -88,7 +89,6 @@
               <groupId>org.springframework</groupId>
               <artifactId>spring-web</artifactId>
               <version>${spring.version}</version>
-              <scope>test</scope>
           </dependency>
           <dependency>
               <groupId>org.springframework</groupId>
@@ -116,7 +116,6 @@
               <groupId>org.apache.commons</groupId>
               <artifactId>commons-lang3</artifactId>
               <version>${commons-lang3.version}</version>
-              <scope>compile</scope>
           </dependency>
           <!-- com.alibaba  -->
           <dependency>
@@ -136,6 +135,11 @@
               <groupId>com.alibaba</groupId>
               <artifactId>druid</artifactId>
               <version>${druid.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>com.alibaba</groupId>
+              <artifactId>fastjson</artifactId>
+              <version>1.2.1</version>
           </dependency>
           <!--com.github.sgroschupf-->
           <dependency>
@@ -283,9 +287,49 @@
                                      <resource>META-INF/spring.schemas</resource>
                                  </transformer>
                              </transformers>
+                             <filters>
+                                 <filter>
+                                     <artifact>*:*</artifact>
+                                     <excludes>
+                                         <exclude>META-INF/*.SF</exclude>
+                                         <exclude>META-INF/*.DSA</exclude>
+                                         <exclude>META-INF/*.RSA</exclude>
+                                     </excludes>
+                                 </filter>
+                             </filters>
                          </configuration>
                      </execution>
                  </executions>
+             </plugin>
+             <!-- jetty插件 -->
+             <plugin>
+                 <groupId>org.eclipse.jetty</groupId>
+                 <artifactId>jetty-maven-plugin</artifactId>
+                 <version>9.2.3.v20140905</version>
+                 <configuration>
+                     <!-- 配置jetty的容器 端口等 -->
+                     <httpConnector>
+                         <port>19090</port>
+                         <idleTimeout>30000</idleTimeout>
+                     </httpConnector>
+                     <!-- 自动发现改变是时间，进行热部署，默认是0，不热部署 -->
+                     <scanIntervalSeconds>1</scanIntervalSeconds>
+                     <!-- 配置web容器 -->
+                     <webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+                     <webAppConfig>
+                         <!-- 项目的根目录 -->
+                         <contextPath>/</contextPath>
+                         <!-- <descriptor></descriptor> --> <!-- The path to the web.xml file for your webapp -->
+                         <!--<defaultsDescriptor>src/main/resources/jetty/webdefault.xml</defaultsDescriptor>-->  <!-- webdefault.xml的路径，若没有配置就是用jetty默认，这个文件在web.xml加载之前加载 -->
+                     </webAppConfig>
+                     <reload>automatic</reload>   <!-- 自动部署默认是 automatic -->
+                     <systemProperties>
+                         <systemProperty>
+                             <name>org.mortbay.util.URI.charset</name>
+                             <value>UTF-8</value>
+                         </systemProperty>
+                     </systemProperties>
+                 </configuration>
              </plugin>
          </plugins>
      </pluginManagement>
