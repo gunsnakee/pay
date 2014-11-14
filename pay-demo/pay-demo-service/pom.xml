@@ -11,253 +11,128 @@
     <packaging>jar</packaging>
 
     <name>pay-demo-service</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.version>0.0.1-SNAPSHOT</project.version><!-- 项目版本 -->
-        <mybatis.version>3.2.7</mybatis.version><!-- 用到 mybatis -->
-        <spring.version>4.0.4.RELEASE</spring.version><!-- spring -->
-        <spring-data-jpa.version>1.5.2.RELEASE</spring-data-jpa.version>
-        <mysql.version>5.1.30</mysql.version><!-- mysql -->
-        <oracle.version>10.2.0.2.0</oracle.version>	<!-- oracle -->
-        <sqlserver.version>1.3.1</sqlserver.version><!-- sqlserver -->
-        <druid.version>1.0.6</druid.version><!-- 数据源 -->
-        <logback.version>1.0.9</logback.version><!-- log -->
-        <slf4j.version>1.7.7</slf4j.version><!-- log -->
-        <java.version>1.8</java.version><!-- 统一jdk版本 -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!--Plugin的属性 -->
-    </properties>
 
     <dependencies>
-        <!-- 接口模块 -->
+        <!-- com.huipengpay -->
         <dependency>
             <groupId>com.huipengpay</groupId>
             <artifactId>pay-demo-api</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- 工具包 -->
         <dependency>
             <groupId>com.huipengpay</groupId>
             <artifactId>pay-base</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 外部包 -->
-        <!-- spring 核心 -->
+        <!-- org.springframework -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-jpa.version}</version>
         </dependency>
-        <!-- end spring -->
-
-        <!-- mybatis -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <!-- org.mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.2.2</version>
         </dependency>
-        <!-- end mybatis -->
-
         <!-- mysql jdbc -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
         </dependency>
-        <!-- end mysql jdbc -->
-
-        <!-- oracle -->
-     <!--   <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>${oracle.version}</version>
-        </dependency>-->
-        <!-- end oracle -->
-
-        <!-- sqlServer driver -->
-        <!--<dependency>
-            <groupId>net.sourceforge.jtds</groupId>
-            <artifactId>jtds</artifactId>
-            <version>${sqlserver.version}</version>
-        </dependency>-->
-        <!-- end sqlServer driver -->
-
-        <!-- 阿里巴巴提供 一款高效的数据库连接池 -->
+        <!-- com.alibaba-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
         </dependency>
-        <!-- end -->
-
-        <!-- dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.5.3</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
+        <!--com.github.sgroschupf zookeeper客户端-->
         <dependency>
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
         </dependency>
-        <!-- end dubbo -->
-
-        <!-- log -->
-        <!-- Logging slf4j 依赖配置 -->
+        <!-- org.slf4j Logging slf4j 依赖配置 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
-        <!-- common-logging 实际调用slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>runtime</scope>
         </dependency>
-        <!-- java.util.logging 实际调用slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>runtime</scope>
         </dependency>
+        <!--ch.qos.logback-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
         </dependency>
-        <!-- log4jdbc 用于打印SQL -->
+        <!-- org.lazyluke 用于打印SQL -->
         <dependency>
             <groupId>org.lazyluke</groupId>
             <artifactId>log4jdbc-remix</artifactId>
-            <version>0.2.7</version>
         </dependency>
-        <!-- end log -->
 
-        <!-- test 正式发布时候请去掉 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- end test -->
     </dependencies>
 
     <build>
-        <!-- maven 相关插件 -->
         <plugins>
-
             <!-- compiler(编译)插件, 设定JDK版本 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <showWarnings>true</showWarnings>
-                </configuration>
             </plugin>
-
             <!-- 打包插件，可以打成cli包，包含所有依赖class -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>1.4</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/spring.handlers</resource>
-                                </transformer>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.alibaba.dubbo.container.Main</mainClass>
-                                </transformer>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/spring.schemas</resource>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>

@@ -11,15 +11,12 @@
     <packaging>pom</packaging>
 
     <name>pay-demo</name>
-    <url>http://maven.apache.org</url>
+    
     <modules>
         <module>pay-demo-api</module>
         <module>pay-demo-service</module>
     </modules>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <dependency>
