@@ -2,6 +2,7 @@ package com.huipengpay.demo.s1;
 
 import com.huipengpay.demo.model.Demo;
 import junit.framework.TestCase;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class DemoServiceTest extends TestCase {
 

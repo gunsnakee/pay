@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.huipengpay.demo.dao.DemoMapper" >
-  <resultMap id="BaseResultMap" type="com.huipengpay.demo.s1.model.Demo" >
+  <resultMap id="BaseResultMap" type="com.huipengpay.demo.model.Demo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
@@ -19,13 +19,13 @@
     delete from TB_DEMO
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.huipengpay.demo.s1.model.Demo" >
+  <insert id="insert" parameterType="com.huipengpay.demo.model.Demo" >
     insert into TB_DEMO (id, name, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.huipengpay.demo.s1.model.Demo" >
+  <insert id="insertSelective" parameterType="com.huipengpay.demo.model.Demo" >
     insert into TB_DEMO
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.huipengpay.demo.s1.model.Demo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.huipengpay.demo.model.Demo" >
     update TB_DEMO
     <set >
       <if test="name != null" >
@@ -62,10 +62,56 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.huipengpay.demo.s1.model.Demo" >
+  <update id="updateByPrimaryKey" parameterType="com.huipengpay.demo.model.Demo" >
     update TB_DEMO
     set name = #{name,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB_DEMO
+  </select>
+
+  <select id="selectBySelective" parameterType="com.huipengpay.demo.model.Demo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB_DEMO
+    where 1=1
+    <if test="id != null" >
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="name != null" >
+      and name =  #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="updateTime != null" >
+      and update_time =  #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+
+  <select id="selectBySearch" parameterType="com.huipengpay.demo.model.Demo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB_DEMO
+    where 1=1
+    <if test="name != null" >
+      and name like  "%"#{name,jdbcType=VARCHAR}"%"
+    </if>
+  </select>
+
+  <select id="selectByPage" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from (
+    select
+    <include refid="Base_Column_List"/>
+    from TB_DEMO
+    where 1=1
+    <if test="demo.name != null">
+      and name like "%"#{demo.name,jdbcType=VARCHAR}"%"
+    </if>
+    order by update_time desc
+    ) as tt limit #{currPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+
 </mapper>

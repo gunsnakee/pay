@@ -1,14 +1,11 @@
-package com.huipengpay.demo.s1.model;
+package com.huipengpay.demo.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class Demo implements Serializable {
+public class TbTest implements Serializable {
     private Integer id;
 
     private String name;
-
-    private Date updateTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -26,13 +23,5 @@ public class Demo implements Serializable {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }
