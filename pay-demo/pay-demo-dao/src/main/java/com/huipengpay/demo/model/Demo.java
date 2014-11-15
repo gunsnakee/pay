@@ -1,9 +1,12 @@
-package com.huipengpay.demo.s1.model;
+package com.huipengpay.demo.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class Demo implements Serializable {
+
+
+
     private Integer id;
 
     private String name;

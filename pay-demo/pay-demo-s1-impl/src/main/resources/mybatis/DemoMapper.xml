@@ -68,4 +68,50 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB_DEMO
+  </select>
+
+  <select id="selectBySelective" parameterType="com.huipengpay.demo.s1.model.Demo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB_DEMO
+    where 1=1
+    <if test="id != null" >
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="name != null" >
+      and name =  #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="updateTime != null" >
+      and update_time =  #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+
+  <select id="selectBySearch" parameterType="com.huipengpay.demo.s1.model.Demo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TB_DEMO
+    where 1=1
+    <if test="name != null" >
+      and name like  "%"#{name,jdbcType=VARCHAR}"%"
+    </if>
+  </select>
+
+  <select id="selectByPage" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from (
+    select
+    <include refid="Base_Column_List"/>
+    from TB_DEMO
+    where 1=1
+    <if test="demo.name != null">
+      and name like "%"#{demo.name,jdbcType=VARCHAR}"%"
+    </if>
+    order by update_time desc
+    ) as tt limit #{currPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+
 </mapper>

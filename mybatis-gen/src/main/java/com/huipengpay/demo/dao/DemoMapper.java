@@ -1,6 +1,6 @@
 package com.huipengpay.demo.dao;
 
-import com.huipengpay.demo.api.model.Demo;
+import com.huipengpay.demo.s1.model.Demo;
 
 public interface DemoMapper {
     int deleteByPrimaryKey(Integer id);

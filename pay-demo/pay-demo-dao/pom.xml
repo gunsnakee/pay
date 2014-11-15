@@ -1,24 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>pay</artifactId>
+        <artifactId>pay-demo</artifactId>
         <groupId>com.huipengpay</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pay-demo</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>pay-demo-dao</artifactId>
+    <packaging>jar</packaging>
 
-    <name>pay-demo</name>
-    
-    <modules>
-        <module>pay-demo-dao</module>
-        <module>pay-demo-s1-api</module>
-        <module>pay-demo-s1-impl</module>
-        <module>pay-demo-web1</module>
-    </modules>
+    <name>pay-demo-dao</name>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -26,6 +22,10 @@
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
         </dependency>
     </dependencies>
 </project>
