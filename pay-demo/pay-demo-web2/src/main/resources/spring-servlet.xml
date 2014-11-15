@@ -17,7 +17,7 @@
     <context:component-scan base-package="com.huipengpay" />
 
     <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
-    <dubbo:annotation package="com.huipengpay.demo.web1.controllers" />
+    <dubbo:annotation package="com.huipengpay.demo.web2.controllers" />
     <mvc:default-servlet-handler/>
 
     <!-- 总跳转，重定向到这个页面 -->

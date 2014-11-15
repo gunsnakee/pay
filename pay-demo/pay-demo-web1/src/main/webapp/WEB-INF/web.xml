@@ -2,9 +2,9 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="WebApp_ID" version="2.5">
+         id="pay-demo-web1" version="2.5">
 
-    <display-name>pay-demo-web</display-name>
+    <display-name>pay-demo-web1</display-name>
 
 
     <context-param>

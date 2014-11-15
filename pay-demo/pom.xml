@@ -19,6 +19,8 @@
         <module>pay-demo-web1</module>
         <module>pay-demo-s2-api</module>
         <module>pay-demo-s2-impl</module>
+        <module>pay-demo-web2</module>
+        <module>pay-demo-web3</module>
     </modules>
 
 
