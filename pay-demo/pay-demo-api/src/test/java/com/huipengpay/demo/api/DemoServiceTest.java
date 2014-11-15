@@ -9,6 +9,7 @@ import java.util.*;
 
 public class DemoServiceTest extends TestCase {
 
+
     public void testInsert() throws Exception {
       /*  ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
         context.start();
@@ -16,12 +17,11 @@ public class DemoServiceTest extends TestCase {
         Demo demo = new Demo();
         demo.setName("p" + new Random(47).nextInt(1000));
         demo.setUpdateTime(new Date());
-        assertEquals(1 == demoService.insert(demo), true);
-        System.exit(0);*/
+        assertEquals(1 == demoService.insert(demo), true);*/
     }
 
     public void testUpdate() throws Exception {
-      /*  ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
+        /*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
         context.start();
         DemoService demoService = (DemoService)context.getBean("demoService");
         Demo demo = new Demo();
@@ -31,34 +31,31 @@ public class DemoServiceTest extends TestCase {
         demo.setUpdateTime(new Date());
         assertEquals(1 == demoService.update(demo), true);
         Demo updateAff = demoService.findById(1);
-        assertEquals(name.equals(updateAff.getName()),true);
-        System.exit(0);*/
+        assertEquals(name.equals(updateAff.getName()),true);*/
     }
 
     public void testFindById() throws Exception {
-        /*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
+       /* ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
         context.start();
         DemoService demoService = (DemoService)context.getBean("demoService");
         Demo demo = demoService.findById(1);
         assertNotNull(demo);
         assertEquals(demo.getId() == 1, true);
-        assertNotNull(demo.getUpdateTime());
-        System.exit(0);*/
+        assertNotNull(demo.getUpdateTime());*/
     }
 
     public void testList() throws Exception {
-       /* ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
+        /*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
         context.start();
         DemoService demoService = (DemoService)context.getBean("demoService");
         List<Demo> demoList = demoService.list();
         assertNotNull(demoList);
         assertEquals(demoList.size()>0,true);
-        assertNotNull(demoList.get(0).getUpdateTime());
-        System.exit(0);*/
+        assertNotNull(demoList.get(0).getUpdateTime());*/
     }
 
     public void testListBySelective() throws Exception {
-      /*  ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
+        /*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
         context.start();
         DemoService demoService = (DemoService)context.getBean("demoService");
         Demo demo = null;
@@ -89,9 +86,7 @@ public class DemoServiceTest extends TestCase {
 
         demo.setUpdateTime(dbDemo.getUpdateTime());
         demos = demoService.listBySelective(demo);
-        assertEquals(demos.size()==1,true);
-        System.exit(0);*/
-
+        assertEquals(demos.size()==1,true);*/
     }
 
     public void testTransInt() throws Exception {
@@ -100,8 +95,7 @@ public class DemoServiceTest extends TestCase {
         DemoService demoService = (DemoService)context.getBean("demoService");
         int rs = demoService.transInt(-123);
         assertEquals(0 == rs,false);
-        assertEquals(-123 == rs,true);
-        System.exit(0);*/
+        assertEquals(-123 == rs,true);*/
     }
 
     public void testTransByte() throws Exception {
@@ -111,8 +105,7 @@ public class DemoServiceTest extends TestCase {
         byte a = 'Z';
         byte rs = demoService.transByte(a);
         assertEquals(0 == rs,false);
-        assertEquals(a == rs,true);
-        System.exit(0);*/
+        assertEquals(a == rs,true);*/
     }
 
     public void testTransBool() throws Exception {
@@ -121,8 +114,7 @@ public class DemoServiceTest extends TestCase {
         DemoService demoService = (DemoService)context.getBean("demoService");
         boolean rs = demoService.transBool(true);
         assertEquals(false == rs ,false);
-        assertEquals(true == rs,true);
-        System.exit(0);*/
+        assertEquals(true == rs,true);*/
     }
 
 
@@ -133,8 +125,7 @@ public class DemoServiceTest extends TestCase {
         String s = "{dgrgtert}\\!@#$*((~`";
         String rs = demoService.transStr(s);
         assertEquals("-0Uyg".equals(rs),false);
-        assertEquals(s.equals(rs),true);
-        System.exit(0);*/
+        assertEquals(s.equals(rs),true);*/
     }
 
 
@@ -154,8 +145,7 @@ public class DemoServiceTest extends TestCase {
         assertEquals(rs.get("a")==null,false);
         assertEquals(rs.get("a").getId()==1,true);
         assertEquals(rs.get("a").getName().equals("p123"),true);
-        assertEquals(rs.get("a").getDate().compareTo(d)==0,true);
-        System.exit(0);*/
+        assertEquals(rs.get("a").getDate().compareTo(d)==0,true);*/
     }
 
     public void testTransSet() throws Exception {
@@ -172,8 +162,7 @@ public class DemoServiceTest extends TestCase {
             assertEquals(22 == demoDto.getId(),true);
             assertEquals("p8998<>".equals(demoDto.getName()),true);
             assertEquals(date.compareTo(demoDto.getDate())==0,true);
-        }
-        System.exit(0);*/
+        }*/
     }
 
     public void testTransList() throws Exception {
@@ -198,8 +187,7 @@ public class DemoServiceTest extends TestCase {
             assertEquals(demoDtos.get(i).getId()==rs.get(i).getId(),true);
             assertEquals(demoDtos.get(i).getName().equals(rs.get(i).getName()),true);
             assertEquals(demoDtos.get(i).getDate().compareTo(rs.get(i).getDate())==0,true);
-        }
-        System.exit(0);*/
+        }*/
 
     }
 
@@ -215,8 +203,7 @@ public class DemoServiceTest extends TestCase {
             assertEquals(demoDtos[i].getId() == rs[i].getId(),true);
             assertEquals(demoDtos[i].getName().equals(rs[i].getName()),true);
             assertEquals(demoDtos[i].getDate().compareTo(rs[i].getDate())==0,true);
-        }
-        System.exit(0);*/
+        }*/
     }
 
     public void testListBySearch() throws Exception {
@@ -237,8 +224,7 @@ public class DemoServiceTest extends TestCase {
         demo.setName("987sdfestrwtrwetewtt");
         rs = demoService.listBySearch(demo);
         assertNotNull(rs);
-        assertEquals(0==rs.size(),true);
-        System.exit(0);*/
+        assertEquals(0==rs.size(),true);*/
     }
 
     public void testListByPage() throws Exception {
@@ -252,7 +238,6 @@ public class DemoServiceTest extends TestCase {
         demo.setName("p");
         assertNotNull(rs);
         assertEquals(rs.size()<=2,true);
-        assertEquals(rs.size()>0,true);
-        System.exit(0);*/
+        assertEquals(rs.size()>0,true);*/
     }
 }

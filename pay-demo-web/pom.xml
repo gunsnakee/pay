@@ -11,10 +11,23 @@
     <name>pay-demo-web</name>
 
     <dependencies>
-        <!-- 阿里服务框架 -->
+
+        <!--com.huipengpay-->
         <dependency>
+            <groupId>com.huipengpay</groupId>
+            <artifactId>pay-demo-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- com.alibaba  -->
+        <dependency>
+            <!--阿里分布式服务框架-->
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
         <!-- spring -->
         <dependency>
@@ -94,6 +107,11 @@
         <dependency>
             <groupId>org.lazyluke</groupId>
             <artifactId>log4jdbc-remix</artifactId>
+        </dependency>
+        <!--taglibs-->
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
         </dependency>
     </dependencies>
     <build>

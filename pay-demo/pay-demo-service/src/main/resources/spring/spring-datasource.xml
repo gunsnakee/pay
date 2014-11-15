@@ -12,7 +12,8 @@
 	<!-- 新互联支付 数据源 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
-		<property name="url" value="jdbc:mysql://192.168.1.55:3306/test" />
+		<!--<property name="url" value="jdbc:mysql://192.168.1.55:3306/test" />-->
+        <property name="url" value="jdbc:mysql://192.168.137.131:3306/test" />
 		<property name="username" value="root" />
 		<property name="password" value="123456" />
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
