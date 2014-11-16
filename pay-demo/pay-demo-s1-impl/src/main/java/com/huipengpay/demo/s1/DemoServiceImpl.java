@@ -21,6 +21,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public int transInt(int i) {
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         return i;
     }
 

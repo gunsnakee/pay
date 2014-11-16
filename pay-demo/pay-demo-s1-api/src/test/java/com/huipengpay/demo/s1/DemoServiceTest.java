@@ -8,7 +8,7 @@ public class DemoServiceTest extends TestCase {
 
 
     public void testInsert() throws Exception {
-      /*  ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
+       /* ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
         context.start();
         DemoService demoService = (DemoService)context.getBean("demoService");
         Demo demo = new Demo();
@@ -87,12 +87,12 @@ public class DemoServiceTest extends TestCase {
     }
 
     public void testTransInt() throws Exception {
-      /*  ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"demo-consumer.xml"});
         context.start();
         DemoService demoService = (DemoService)context.getBean("demoService");
         int rs = demoService.transInt(-123);
         assertEquals(0 == rs,false);
-        assertEquals(-123 == rs,true);*/
+        assertEquals(-123 == rs,true);
     }
 
     public void testTransByte() throws Exception {
