@@ -10,6 +10,8 @@
         <module>pay-base</module>
         <module>pay-demo</module>
         <module>pay-static</module>
+        <module>pay-web</module>
+        <module>pay-dubbo</module>
     </modules>
     <packaging>pom</packaging>
 
